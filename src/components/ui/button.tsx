@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
@@ -45,6 +46,14 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
+  )
+}
+
+export function ButtonLink({ href, variant, size, className, children, ...rest }: any) {
+  return (
+    <Link href={href} className={cn(buttonVariants({ variant, size, className }))} {...rest}>
+      {children}
+    </Link>
   )
 }
 
