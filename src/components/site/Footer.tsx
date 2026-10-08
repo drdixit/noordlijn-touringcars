@@ -51,7 +51,7 @@ export const Footer = ({ lang, settings, services }: { lang: Lang; settings: Sit
       </div>
       <div className="border-t border-white/10">
         <div className="container-site flex flex-col gap-3 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {settings.footer.copyright}. {d.footer.rights}</p>
+          <p>© 2024 {settings.footer.copyright}. {d.footer.rights}</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-white">{d.footer.privacy}</a>
             <a href="#" className="hover:text-white">{d.footer.terms}</a>
