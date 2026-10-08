@@ -10,6 +10,7 @@ import { Footer } from '@/components/site/Footer';
 import { MobileQuoteBar } from '@/components/site/MobileQuoteBar';
 
 export const generateStaticParams = () => LANGS.map((lang) => ({ lang }));
+export const instant = false;
 
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params;
