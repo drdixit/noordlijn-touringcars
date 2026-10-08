@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply overflow-x-clip bg-white text-ink antialiased; }
+  h1, h2, h3, h4 { @apply font-display text-navy-900; letter-spacing: -0.01em; }
+  ::selection { @apply bg-navy-800 text-white; }
+  :focus-visible { outline: 2px solid #B8333A; outline-offset: 2px; }
+}
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-signal-600; }
+  .prose-article p { @apply mb-5 leading-relaxed text-[17px] text-ink/85; }
+  .prose-article h2 { @apply mb-3 mt-10 text-2xl font-semibold; }
+  .prose-article ul { @apply mb-5 list-disc space-y-2 pl-5 text-ink/85; }
+}
