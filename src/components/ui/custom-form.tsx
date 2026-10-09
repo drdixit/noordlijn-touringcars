@@ -48,8 +48,8 @@ export const Checkbox = ({ label, description, checked, onChange, testId }: { la
 
 export const Toggle = ({ checked, onChange, label, testId }: { checked: boolean; onChange: (v: boolean) => void; label?: string; testId?: string }) => (
   <button type="button" role="switch" aria-checked={checked} onClick={() => onChange(!checked)} data-testid={testId} className="inline-flex items-center gap-2 text-sm">
-    <span className={cn('relative h-5 w-9 rounded-full transition-colors', checked ? 'bg-emerald-600' : 'bg-navy-200')}>
-      <span className={cn('absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform', checked ? 'translate-x-4' : 'translate-x-0.5')} />
+    <span className={cn('relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors', checked ? 'bg-emerald-600' : 'bg-navy-200')}>
+      <span className={cn('inline-block h-5 w-5 transform rounded-full bg-white transition-transform', checked ? 'translate-x-5' : 'translate-x-0.5')} />
     </span>
     {label && <span className="text-ink/80">{label}</span>}
   </button>
