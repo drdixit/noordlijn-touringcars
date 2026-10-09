@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState, useEffect, type ReactNode } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Check, Users, Sparkles, Lock } from 'lucide-react';
@@ -36,7 +36,8 @@ export const QuoteFlow = ({ lang, services, vehicles, extras, initial }: { lang:
   const [sending, setSending] = useState(false);
 
   const pax = Number(trip.passengers) || 0;
-  const today = new Date().toISOString().slice(0, 10);
+  const [today, setToday] = useState('');
+  useEffect(() => { setToday(new Date().toISOString().slice(0, 10)); }, []);
   const vehicle = vehicles.find((v) => v.id === vehicleId);
   const service = services.find((s) => s.id === serviceId);
   const recommended = useMemo(() => vehicles.filter((v) => v.capacity >= pax).sort((a, b) => a.capacity - b.capacity)[0], [vehicles, pax]);
@@ -111,13 +112,13 @@ export const QuoteFlow = ({ lang, services, vehicles, extras, initial }: { lang:
                 </div>
                 <Field label={f.passengers} htmlFor="q-pax" error={errors.passengers} className="sm:max-w-[200px]"><Input id="q-pax" type="number" inputMode="numeric" min={1} value={trip.passengers} onChange={setT('passengers')} placeholder={f.passengersPh} error={errors.passengers} data-testid="quote-passengers" /></Field>
                 <div className="grid grid-cols-2 gap-4 sm:gap-5">
-                  <Field label={f.depDate} htmlFor="q-date" error={errors.date}><Input id="q-date" type="date" min={today} value={trip.date} onChange={setT('date')} error={errors.date} data-testid="quote-date" /></Field>
+                  <Field label={f.depDate} htmlFor="q-date" error={errors.date}><Input id="q-date" type="date" min={today || undefined} value={trip.date} onChange={setT('date')} error={errors.date} data-testid="quote-date" /></Field>
                   <Field label={f.depTime} htmlFor="q-time" error={errors.time}><Input id="q-time" type="time" value={trip.time} onChange={setT('time')} error={errors.time} data-testid="quote-time" /></Field>
                 </div>
                 <fieldset className="border-t border-navy-100 pt-5">
                   <legend className="pr-3 text-sm font-semibold text-ink/60">{f.returnOptional}</legend>
                   <div className="grid grid-cols-2 gap-4 sm:gap-5">
-                    <Field label={f.retDate} htmlFor="q-rdate" error={errors.returnDate}><Input id="q-rdate" type="date" min={trip.date || today} value={trip.returnDate} onChange={setT('returnDate')} error={errors.returnDate} data-testid="quote-return-date" /></Field>
+                    <Field label={f.retDate} htmlFor="q-rdate" error={errors.returnDate}><Input id="q-rdate" type="date" min={trip.date || today || undefined} value={trip.returnDate} onChange={setT('returnDate')} error={errors.returnDate} data-testid="quote-return-date" /></Field>
                     <Field label={f.retTime} htmlFor="q-rtime"><Input id="q-rtime" type="time" value={trip.returnTime} onChange={setT('returnTime')} data-testid="quote-return-time" /></Field>
                   </div>
                 </fieldset>

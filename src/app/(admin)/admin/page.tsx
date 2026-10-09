@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { formatDate, formatPrice } from '@/lib/utils';
 import { computeQuote } from '@/lib/quoteMath';
@@ -11,13 +12,19 @@ import { useRouter } from 'next/navigation';
 export default function AdminDashboard() {
   const { quotes, vehicles, services, posts, customers, pricing } = useAdmin();
   const router = useRouter();
+  const [todayDate, setTodayDate] = useState<string>('');
+  
+  useEffect(() => {
+    setTodayDate(new Date().toISOString());
+  }, []);
+  
   const by = (s: string[]) => quotes.filter((q) => s.includes(q.status)).length;
   const pipeline = quotes.filter((q) => ['quoted', 'accepted'].includes(q.status)).reduce((s, q) => s + computeQuote(q, pricing).total, 0);
   const upcoming = quotes.filter((q) => q.status === 'confirmed').sort((a, b) => a.departureDate.localeCompare(b.departureDate));
   const cust = (id: string) => customers.find((c) => c.id === id);
   return (
     <>
-      <PageHeader title="Dashboard" sub={`Overview for ${formatDate(new Date().toISOString(), 'en')}`} />
+      <PageHeader title="Dashboard" sub={todayDate ? `Overview for ${formatDate(todayDate, 'en')}` : 'Overview'} />
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4" data-testid="dashboard-stats">
         <StatCard label="New quote requests" value={by(['new'])} sub="Waiting for first contact" href="/admin/quotes?status=new" testId="stat-new-quotes" />
         <StatCard label="Pending quotes" value={by(['contacted', 'quoted', 'accepted'])} sub={`${formatPrice(pipeline, 'en')} in open quotes`} href="/admin/quotes" testId="stat-pending-quotes" />

@@ -13,6 +13,10 @@
 6. **Phase 4**: Ported the entire Admin Dashboard (`src/app/(admin)` and `src/components/admin/`).
 7. **Phase 4**: Recreated legacy `Table`, `Badge`, and `Modal` primitives to maintain exactly the same visual design while ensuring 100% build compatibility. 
 8. Built successfully with `bun run build` with 0 errors across all routes (Site and Admin).
+9. Fixed mobile drawer active state indication bug by tracking pathname in `Header.tsx`.
+10. Fixed `Toggle` switch UI layout in admin panel to remove translation math bugs.
+11. Resolved React missing `key` warnings in `src/app/(admin)/admin/content/page.tsx`.
+12. Fixed hydration mismatch risks in Client Components (`admin/page.tsx` and `QuoteFlow.tsx`) caused by evaluating `new Date()` during render.
 
 ## Next Steps
 - Start **Phase 5: Database Integration** (Connect a real database and swap out the dummy data).

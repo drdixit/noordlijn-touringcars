@@ -83,7 +83,7 @@ const SettingsTab = ({ tab }: { tab: Exclude<Tab, 'faqs' | 'testimonials'> }) =>
   const [s, setS] = useState<SiteSettings>(settings);
   const save = () => { setSettings(s); toast('Content saved'); };
   const footer = <div className="mt-6 flex justify-end"><Button variant="secondary" size="sm" onClick={save} data-testid="content-save-btn">Save changes</Button></div>;
-  const txt = (label: string, value: string, on: (v: string) => void, id: string) => <Field label={label} htmlFor={id}><Input id={id} value={value} onChange={(e) => on(e.target.value)} data-testid={id} /></Field>;
+  const txt = (label: string, value: string, on: (v: string) => void, id: string) => <Field key={id} label={label} htmlFor={id}><Input id={id} value={value} onChange={(e) => on(e.target.value)} data-testid={id} /></Field>;
 
   if (tab === 'homepage') return (
     <Panel title="Homepage content" testId="content-homepage"><div className="grid gap-5">
