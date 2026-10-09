@@ -21,3 +21,5 @@ export default async function BlogPage(props: { params: Promise<{ lang: Lang }> 
     </>
   );
 }
+
+export const instant = false;

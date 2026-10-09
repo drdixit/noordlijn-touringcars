@@ -133,3 +133,5 @@ export default async function HomePage(props: { params: Promise<{ lang: Lang }> 
     </>
   );
 }
+
+export const instant = false;

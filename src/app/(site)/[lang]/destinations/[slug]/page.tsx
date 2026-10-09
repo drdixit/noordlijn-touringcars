@@ -62,3 +62,5 @@ export default async function DestinationDetail(props: { params: Promise<{ lang:
     </>
   );
 }
+
+export const instant = false;

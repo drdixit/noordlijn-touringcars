@@ -46,3 +46,5 @@ export default async function ContactPage(props: { params: Promise<{ lang: Lang 
     </>
   );
 }
+
+export const instant = false;

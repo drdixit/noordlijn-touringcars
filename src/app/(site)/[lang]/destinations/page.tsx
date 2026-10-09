@@ -24,3 +24,5 @@ export default async function DestinationsPage(props: { params: Promise<{ lang: 
     </>
   );
 }
+
+export const instant = false;

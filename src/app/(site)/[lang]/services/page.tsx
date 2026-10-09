@@ -26,3 +26,5 @@ export default async function ServicesPage(props: { params: Promise<{ lang: Lang
     </>
   );
 }
+
+export const instant = false;

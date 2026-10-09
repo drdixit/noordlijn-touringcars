@@ -51,3 +51,5 @@ export default async function AboutPage(props: { params: Promise<{ lang: Lang }>
     </>
   );
 }
+
+export const instant = false;

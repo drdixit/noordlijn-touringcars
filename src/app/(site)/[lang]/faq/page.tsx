@@ -44,3 +44,5 @@ export default async function FaqPage(props: { params: Promise<{ lang: Lang }> }
     </>
   );
 }
+
+export const instant = false;

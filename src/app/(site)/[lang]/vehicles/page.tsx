@@ -22,3 +22,5 @@ export default async function VehiclesPage(props: { params: Promise<{ lang: Lang
     </>
   );
 }
+
+export const instant = false;

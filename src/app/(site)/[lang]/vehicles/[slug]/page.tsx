@@ -69,3 +69,5 @@ export default async function VehicleDetail(props: { params: Promise<{ lang: Lan
     </>
   );
 }
+
+export const instant = false;

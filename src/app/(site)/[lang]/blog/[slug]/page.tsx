@@ -48,3 +48,5 @@ export default async function BlogDetail(props: { params: Promise<{ lang: Lang; 
     </>
   );
 }
+
+export const instant = false;

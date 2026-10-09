@@ -90,3 +90,5 @@ export default async function ServiceDetail(props: { params: Promise<{ lang: Lan
     </>
   );
 }
+
+export const instant = false;
