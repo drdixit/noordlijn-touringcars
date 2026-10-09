@@ -64,6 +64,10 @@ export const Header = ({ lang, phone }: { lang: Lang; phone: string }) => {
               <Link key={i.key} href={i.href} onClick={() => setOpen(false)} data-testid={`mobile-nav-${i.key}`} className={cn("border-b border-navy-50 py-3.5 text-base font-semibold", path.startsWith(i.href) ? "text-signal-600" : "text-navy-900")}>{i.label}</Link>
             ))}
             <Link href={href(lang, '/faq')} onClick={() => setOpen(false)} className={cn("border-b border-navy-50 py-3.5 text-base font-semibold", path.startsWith(href(lang, '/faq')) ? "text-signal-600" : "text-navy-900")}>{d.nav.faq}</Link>
+            <a href="https://github.com/drdixit/noordlijn-touringcars" target="_blank" rel="noopener noreferrer" className="border-b border-navy-50 py-3.5 flex items-center gap-2 text-base font-semibold text-navy-900">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.1-3.8s-1.2-.4-3.9 1.4a13.3 13.3 0 0 0-7 0c-2.7-1.8-3.9-1.4-3.9-1.4a5.5 5.5 0 0 0-.1 3.8 5.5 5.5 0 0 0-1.5 3.8c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/></svg>
+              GitHub
+            </a>
             <a href={`tel:${phone.replace(/\s/g, '')}`} className="flex items-center gap-2 py-3.5 text-base text-navy-800"><Phone className="h-4 w-4" />{phone}</a>
           </nav>
         </div>
