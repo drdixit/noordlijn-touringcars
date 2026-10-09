@@ -57,9 +57,9 @@ export const Header = ({ lang, phone }: { lang: Lang; phone: string }) => {
         <div className="border-t border-navy-100 bg-white lg:hidden" data-testid="mobile-menu">
           <nav className="container-site flex flex-col py-2">
             {items.map((i) => (
-              <Link key={i.key} href={i.href} onClick={() => setOpen(false)} data-testid={`mobile-nav-${i.key}`} className="border-b border-navy-50 py-3.5 text-base font-semibold text-navy-900">{i.label}</Link>
+              <Link key={i.key} href={i.href} onClick={() => setOpen(false)} data-testid={`mobile-nav-${i.key}`} className={cn("border-b border-navy-50 py-3.5 text-base font-semibold", path.startsWith(i.href) ? "text-signal-600" : "text-navy-900")}>{i.label}</Link>
             ))}
-            <Link href={href(lang, '/faq')} onClick={() => setOpen(false)} className="border-b border-navy-50 py-3.5 text-base font-semibold text-navy-900">{d.nav.faq}</Link>
+            <Link href={href(lang, '/faq')} onClick={() => setOpen(false)} className={cn("border-b border-navy-50 py-3.5 text-base font-semibold", path.startsWith(href(lang, '/faq')) ? "text-signal-600" : "text-navy-900")}>{d.nav.faq}</Link>
             <a href={`tel:${phone.replace(/\s/g, '')}`} className="flex items-center gap-2 py-3.5 text-base text-navy-800"><Phone className="h-4 w-4" />{phone}</a>
           </nav>
         </div>
